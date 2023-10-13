@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>MPI Send/Recv | Daoxuan Xu&#39;s Homepage</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://DX990307.github.io/favicon.ico?v=1697156692676">
+<link rel="stylesheet" href="https://DX990307.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Mid-term Code review
+Module 2a
+Hello world(MPI)
+assuse the total number of the rank is 8.
+#include &quot;mpi.h&quot;
+#in..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://DX990307.github.io">
+        <img src="https://DX990307.github.io/images/avatar.png?v=1697156692676" class="site-logo">
+        <h1 class="site-title">Daoxuan Xu&#39;s Homepage</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://1drv.ms/b/s!An2NZ8d-E8qqvhroNSgEYveIL2LW" class="site-nav" target="_blank">
+            CV
+          </a>
+        
+      
+        
+          <a href="https://DX990307.github.io/archives" class="site-nav">
+            学习笔记
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      纵使困顿难行，亦当砥砺奋进
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> 诗酒趁年华 | <a class="rss" href="https://DX990307.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">MPI Send/Recv</h2>
+            <div class="post-date">2023-03-06</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="mid-term-code-review">Mid-term Code review</h1>
+<h2 id="module-2a">Module 2a</h2>
+<h3 id="hello-worldmpi">Hello world(MPI)</h3>
+<p>assuse the total number of the rank is 8.</p>
+<pre><code class="language-c">#include &quot;mpi.h&quot;
+#include &lt;stdio.h&gt;
+void main(int argc, char *argv[])
+{
+    int RankID, NumOfRanks;
+    MPI_Init(&amp;argc, &amp;argv);
+    MPI_Comm_Rank(MPI_Comm_WORLD, &amp;RankID);
+    MPI_Comm_Size(MPI_Comm_WORLD, &amp;NumOfRanks);
+    printf(&quot;I am rank %d, total %d&quot;, RankID, NumOfRanks);
+    MPI_Finalize();
+    return 0;
+}
+</code></pre>
+<p>The out of the code graph is</p>
+<pre><code>I am rank 0, total 8
+I am rank 3, total 8
+...
+</code></pre>
+<h3 id="mpi_sendmpi_recv-example">MPI_send/MPI_Recv Example</h3>
+<pre><code class="language-c">#include &quot;mpi.h&quot;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define MASTER = 0; // define the master rank is rank 0;
+int main(int argc, char *argv[])
+{
+    int RankID, NumOfRanks; // define rankid for the rank itself, and the total number of the ranks.
+    int source, dest; // define sender(source) and receiving rank(daest)
+    int tag = 0; //tag of message buffer.
+    char buffer[100];
+    MPI_Status status;
+
+    MPI_Init(&amp;argc, &amp;argv);
+    MPI_Comm_Rank(MPI_Comm_WORLD, &amp;RankID);
+    MPI_Comm_Size(MPI_Comm_WORLD, &amp;NumOfRanks);
+    if(RankID != 0)
+    {
+        sprintf(buffer, &quot;Greetings from %d&quot;, RankID); // store &quot;Gretting from RankID&quot; into buffer;
+        dest = MASTER;
+        counts = strlen(buffer) + 1; // total counts of the char in buffer
+        MPI_Send(buffer, counts, MPI_CHAR, dest, tag, MPI_COMM_WORLD);
+    }
+    else
+    {
+        for(source = 1; source &lt; NumOfRanks; source++)
+        {
+            MPI_Recv(buffer, 100, srouce, tag, MPI_COMM_WORLD, &amp;status);
+            printf(&quot;%s\n&quot;, buffer);
+        }
+    }
+    return 0;
+}
+</code></pre>
+<p>The output should be</p>
+<pre><code>Greetings from 1
+Greetings from 2
+Greetings from 3
+Greetings from 4
+Greetings from 5
+Greetings from 6
+Greetings from 7
+</code></pre>
+<p>revisit the code of <code>MPI_Send</code> and <code>MPI_Recv</code><br>
+<strong>MPI_Send</strong></p>
+<pre><code class="language-c">MPI_Send(void *buffer, 
+         int count, 
+         MPI_DataType, MPI_CHAR
+         int dest
+         int tag
+         MPI_COMM_WORLD);
+</code></pre>
+<p>buffer: the buffer that will be sent;</p>
+<p>count: the total number of counts that will be sent;</p>
+<p>MPI_DataType : the type that will be sent. E.g. MPI_INT, MPI_DOUBLE;</p>
+<p>dest: The destination of the Send function;</p>
+<p>tag: message tag, that is used to be distinguish messages that are sent by the same sender simultaneously.<br>
+When A sends a message to B, A will package the message and send the message to the rank that processes B. When B receive the message successfully, it will send back a message to tell A that &quot;I receive the message from you successfully&quot;. After that, A will execute other operations. Sometimes, A will send several messages to B simultaneously. B needs to use parameter &quot;tag&quot; to distinguish messages sent by A.</p>
+<p>MPI_COMM_WORLD: the zone that processor located in.</p>
+<p><strong>MPI_Recv</strong></p>
+<pre><code class="language-c">MPI_Recv(
+    void *buffer,
+    int count,
+    MPI_DataType, MPI_CHAR,
+    int source,
+    int tag,
+    MPI_COMM_WORLD,
+    &amp;status
+);
+</code></pre>
+<p>&amp;status <sup>[1]</sup>: MPI_status is a kind of data structure, which includes</p>
+<ol>
+<li>the rank of the sender, the rank of the sender is stored in the <code>MPO_SOURCE</code> element of the structure. That is if we declare an <code>MPI_Status status</code> variable, the rank can be accessed with <code>status.MPI_SOURCE</code>.</li>
+<li>The tag of the message. The tag of the message can be accessed by the <code>MPI_TAG</code> element of the structure.</li>
+<li>The length of the message. The length of the message does not have a predefined element in the status structure. Instead, we have to find out the length of the message with <code>MPI_Get_count</code>.</li>
+</ol>
+<h3 id="another-example-of-mpi_sendmpi_recv">Another Example of MPI_Send/MPI_Recv</h3>
+<p>matrix multiplication</p>
+<p>The main code of the matrix multiplication</p>
+<pre><code class="language-c">for(i = 0; i&lt;NRA; i++)
+    for(j = 0; j&lt;NCB; j++)
+    {
+        c[i][j] = 0;
+        for (k = 0; k &lt; NCA; k++)
+            c[i][j] = c[i][j] + a[i][k] * b[k][j];
+    }
+</code></pre>
+<p>MPI code (main code) Use a <strong>master/worker style</strong> architecture</p>
+<p>Master rank perform coodrination:</p>
+<ul>
+<li>Distributes rows of Martix A</li>
+<li>Send all of Martix B to each worker ranks.</li>
+</ul>
+<p>Workers</p>
+<ul>
+<li>On its own data to create a partical C martix</li>
+<li>Sends partical result back to master rank</li>
+</ul>
+<pre><code class="language-c">#define MASTER = 0; // assume we have 8 ranks
+#define FROM_MASTER = 1;
+#define FROM_WORKER = 2;
+int main(int argc, char **argv)
+{
+    double NRA = atof(argv[1]);
+    double NCA_NRB = atof(argv[2]);
+    double NCB = atof(argv[3]);
+    double A[NRA][NCA_NRB],
+           B[NCA_NRB][NCB],
+           C[NRA][NCB];
+    int rankID,
+        numOfRanks,
+        averow,
+        extra,
+        offset
+        mtype;
+
+    offset = 0;
+    MPI_Init(&amp;argc, &amp;argv);
+    MPI_COMM_RANK(MPI_COMM_WORLD, &amp;rankID);
+    MPI_COMM_SIZE(MPI_COMM_WORLD, &amp;numOfRanks);
+
+    /*Master Operation*/
+    if (rankID == MASTER)
+    {
+        averow = NRA/numOfRanks;
+        extra  = NRA%numOfRanks;
+
+        mtype = FROM_MASTER;
+
+        ... code of generate matrix a and b...
+
+        for(int dest = 1; dest &lt; numOfRanks; dest++)
+        {
+            int row = (dest &lt;= extra) ? averow + 1 : averow;
+            printf(&quot;Sending %d row to rask %d\n&quot;, row, dest);
+            MPI_Sent(&amp;offset, 1, MPI_INT, dest, mtype, MPI_COMM_WORLD);
+            MPI_Sent(&amp;row, 1, MPI_INT, dest, mtype, MPI_COMM_WORLD);
+            MPI_Sent(&amp;A[offset][0], row*NCA_NRB, MPI_DOUBLE, dest, mtype, MPI_COMM_WORLD);
+            MPI_Sent(&amp;B, NCA_NRB*NCB, MPI_DOUBLE, dest, mtype, MPI_COMM_WORLD);
+            offset += row;
+        }
+
+        mytype = FROM_WORKER;
+        for (int dest = 1; dest &lt; numOfRanks; dest++)
+        {
+            printf(&quot;receive %d row to rask %d\n&quot;, row, dest);
+            MPI_Recv(&amp;offset, 1, MPI_INT, dest, mtype, MPI_COMM_WORLD, &amp;status);
+            MPI_Recv(&amp;row, 1, MPI_INT, dest, mtype, MPI_COMM_WORLD, &amp;status);
+            MPI_Recv(&amp;C[offset][0], row*NCB, MPI_DOUBLE, dest, mtype， MPI_COMM_WORLD, &amp;status);
+        }
+
+        
+    }
+
+    if （rankID != MASTER）
+    {
+        mtype = FROM_MASTER;
+        MPI_Recv(&amp;offset, 1, MPI_INT, MASTER, mtype, MPI_COMM_WORLD, &amp;status);
+        MPI_Recv(&amp;row, 1, MPI_INT, MASTER, mtype, MPI_COMM_WORLD, &amp;status);
+        MPI_Recv(&amp;A[offset][0], row*NCA_NRB, MPI_INT, MASTER, mtype, MPI_COMM_WORLD, &amp;status);
+        MPI_Recv(&amp;B, NCB*NCA_NRB, MPI_INT, MASTER, mtype, MPI_COMM_WORLD, &amp;status);
+
+        ... code of computing the matrix multiplication ...
+
+        mtype = FROM_WORKER;
+        MPI_Send(&amp;offset, 1, MPI_INT, MASTER, mtype, MPI_COMM_WORLD);
+        MPI_Send(&amp;row, 1, MPI_INT, MASTER, mtype, MPI_COMM_WORLD);
+        MPI_Send(&amp;C[offset][0], row*NCB, MPI_INT, MASTER, mtype, MPI_COMM_WORLD);
+    }
+}
+</code></pre>
+<h2 id="reference">Reference</h2>
+<p>[1]:<a href="https://mpitutorial.com/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/">MPI Tutorial</a></p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://DX990307.github.io/post/mmumemory-management-unitxue-xi-bi-ji-v000/">
+                  <h3 class="post-title">
+                    MMU(memory management unit)学习笔记V0.0.0
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'c64a13fb828511aa8414',
+        clientSecret: 'e5ee8297ca09fe54912b3465edb19f76735b093b',
+        repo: 'DX990307.github.io',
+        owner: 'DX990307',
+        admin: ['DX990307'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>MMU(memory management unit)学习笔记V0.0.0 | Daoxuan Xu&#39;s Homepage</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://DX990307.github.io/favicon.ico?v=1697156692676">
+<link rel="stylesheet" href="https://DX990307.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Previously, I wanted to learn the structure of the memory management unit in computer architecture -- a quantitative app..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://DX990307.github.io">
+        <img src="https://DX990307.github.io/images/avatar.png?v=1697156692676" class="site-logo">
+        <h1 class="site-title">Daoxuan Xu&#39;s Homepage</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://1drv.ms/b/s!An2NZ8d-E8qqvhroNSgEYveIL2LW" class="site-nav" target="_blank">
+            CV
+          </a>
+        
+      
+        
+          <a href="https://DX990307.github.io/archives" class="site-nav">
+            学习笔记
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      纵使困顿难行，亦当砥砺奋进
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> 诗酒趁年华 | <a class="rss" href="https://DX990307.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">MMU(memory management unit)学习笔记V0.0.0</h2>
+            <div class="post-date">2023-03-02</div>
+            
+            <div class="post-content" v-pre>
+              <p>Previously, I wanted to learn the structure of the memory management unit in <em>computer architecture -- a quantitative approach</em> comperhensively. However, I cannot find a chapter that inturduce MMU in the book. In that case, I read some materials on the Internet and try to write something to record what I am learnt from the wikipedia and other documents.</p>
+<h3 id="brief-introduction-about-memory-management-unitmmu">Brief introduction about memory management unit(MMU)</h3>
+<p>MMU(memory management unit), also called PMMU (paged memory management unit). It is responsible for the translation of virtual addresses to physical addresses. MMUs also have some functions such as memory protection, cache control, bus arbitration etc.</p>
+<p>In different computer architecture, the place of the MMU in the computer architecture are different. Sometimes engineers let the TLB as a part of the MMU. some times the TLB and the MMU are indivadual components in the computer architecture.</p>
+<h3 id="prerequisite-knowledge">prerequisite knowledge</h3>
+<p><strong>physical addresses and virtual addresses</strong><br>
+The benefit of using virtual addresses is that it allows management software, such as an Operating System (OS), to control the view of memory that is presented to software. The OS can control what memory is visible, the virtual address at which that memory is visible, and what accesses are permitted to that memory. This allows the OS to sandbox applications (hiding the resources of one application from another application) and to provide abstraction from the underlying hardware.</p>
+<p>One benefit of using virtual addresses is that an OS can present multiple fragmented physical regions of memory as a single, contiguous virtual address space to an application.</p>
+<p>Virtual addresses also benefit software developers, who will not know a system’s exact memory addresses when writing their application. With virtual addresses, software developers do not need to concern themselves with the physical memory. The application knows that it is up to the OS and the hardware to work together to perform the address translation.</p>
+<p>In practice, each application can use its own set of virtual addresses that will be mapped to different locations in the physical system. As the operating system switches between different applications it re-programs the map. This means that the virtual addresses for the current application will map to the correct physical location in memory.</p>
+<p>Virtual addresses are translated to physical addresses through mappings.</p>
+<p><strong>page table and page entry</strong><br>
+In one word, the page table is a lookup table used by a virtual memory system in a computer operating system to store the mapping between virtual addresses and physical addresses.</p>
+<p>The page entry is a structure that holds the mapping between a virtual page and corresponding physical frame, it also contains other information such as a dirty bit or a modified bit.</p>
+<h3 id="the-memory-management-unitmmu">The memory management unit(MMU)</h3>
+<p>The major component of the MMU is the table walk unit and a very large page table. The table walk unit processes the page table walk operation that find the physical address by the given virtual address the page table.</p>
+<p>MMUs also has other control logic to modify the property of PTEs which is pretty significant since such property can guarantee the data is what the processor needs.</p>
+<h3 id="implemented-by-simulator">Implemented by simulator</h3>
+<p><a href="https://gitlab.com/akita/mem/-/tree/v3/vm/mmu">https://gitlab.com/akita/mem/-/tree/v3/vm/mmu</a><br>
+<a href="https://pages.cs.wisc.edu/~swilson/gem5-docs/x86_2tlb_8cc_source.html">https://pages.cs.wisc.edu/~swilson/gem5-docs/x86_2tlb_8cc_source.html</a></p>
+<h3 id="reference-useful-links">reference &amp; useful links</h3>
+<p><a href="https://developer.arm.com/documentation/101811/0102/The-Memory-Management-Unit--MMU-">https://developer.arm.com/documentation/101811/0102/The-Memory-Management-Unit--MMU-</a><br>
+<a href="https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit">https://en.wikipedia.org/wiki/Input–output_memory_management_unit</a><br>
+<a href="https://en.wikipedia.org/wiki/Memory_management_unit">https://en.wikipedia.org/wiki/Memory_management_unit</a></p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://DX990307.github.io/post/git-opeartions/">
+                  <h3 class="post-title">
+                    Git Opeartions
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'c64a13fb828511aa8414',
+        clientSecret: 'e5ee8297ca09fe54912b3465edb19f76735b093b',
+        repo: 'DX990307.github.io',
+        owner: 'DX990307',
+        admin: ['DX990307'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
