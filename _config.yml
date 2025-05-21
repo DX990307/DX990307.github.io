@@ -117,7 +117,7 @@ author:
   avatar           : "/assets/images/avatar.jpg"
   bio              : "Ph.D candidate in Computer Science at William & Mary, supervised by [**Prof. Yifan Sun**](https://sarchlab.org/syifan)"
   location         : Williamsburg, Virginia, USA
-  email            : dxu05@wm.edu
+  # email            : dxu05@wm.edu
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
