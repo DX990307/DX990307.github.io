@@ -113,11 +113,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
+  name             : "Daoxuan Xu"
+  avatar           : "/assets/images/avatar.jpg"
+  bio              : "Ph.D candidate in Computer Science at William & Mary, supervised by [**Prof. Yifan Sun**](https://sarchlab.org/syifan)"
+  location         : Williamsburg, Virginia, USA
+  email            : dxu05@wm.edu
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -149,7 +149,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      url: "https://github.com/DX990307"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
