@@ -159,12 +159,14 @@ footer:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url:
+    
 
 
 # Reading Files
 include:
   - .htaccess
   - _pages
+  - _pubs
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -325,3 +327,10 @@ defaults:
       comments: # true
       share: true
       related: true
+  # _pubs
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
