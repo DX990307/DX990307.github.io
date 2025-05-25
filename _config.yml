@@ -160,13 +160,19 @@ footer:
       icon: "fab fa-fw fa-instagram"
       # url:
     
-
+# Register Collections
+collections:
+  WeeklyPlan:
+    output: true
+    permalink: /project/WeeklyPlan/:name/
 
 # Reading Files
 include:
   - .htaccess
   - _pages
   - _pubs
+  - _projects
+  - _projects/_WeeklyPlan
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -245,6 +251,7 @@ pagination:
   # enabled: true
   debug: false
   collection: 'posts'
+
   per_page: 10
   permalink: '/page/:num/'
   title: ':title - page :num'
@@ -334,3 +341,14 @@ defaults:
     values:
       layout: single
       author_profile: true
+  # projects
+  - scope:
+      path: "/_projects"
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
