@@ -165,6 +165,11 @@ collections:
   WeeklyPlan:
     output: true
     permalink: /project/WeeklyPlan/:name/
+    
+  computerArchitectureLearningNote:
+    output: true
+    permalink: /project/computerArchitectureLearningNote/:name/
+  
 
 # Reading Files
 include:
@@ -173,6 +178,7 @@ include:
   - _pubs
   - _projects
   - _projects/_WeeklyPlan
+  - _projects/_computerArchitectureLearningNote
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"

@@ -1,5 +1,5 @@
 ---
 title: Weekly Plan
 layout: single
-permalink: /project/WeeklyPlan/
+permalink: /_project/_WeeklyPlan/
 ---
