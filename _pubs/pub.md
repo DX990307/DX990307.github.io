@@ -11,6 +11,8 @@ author_profile: true
 
 ### HDPAT: Hierarchical Distributed Page Address Translation for Wafer-Scale GPUs (HPCA 26)
 
+### [DaisenBot: Human-AI Collaboration in GPU Performance Analysis with Multi-Modal AI Assistant](https://sarchlab.org/cams25/DaisenBot-%20Human-AI%20Collaboration%20in%20GPU%20Performance%20Analysis%20with%20Multi-Modal%20AI%20Assistant.pdf)
+
 ### [Sibir: A Dynamic Binary Instrumentation Framework Targeting AMD GPUs](https://ieeexplore.ieee.org/document/11096405)
 
 M. Raayai-Ardakani et al., "Luthier: A Dynamic Binary Instrumentation Framework Targeting AMD GPUs," 2025 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS), Ghent, Belgium, 2025, pp. 137-149, doi: 10.1109/ISPASS64960.2025.00022.
