@@ -7,9 +7,9 @@ author_profile: true
 
 ## GPU architecture research
 
-### QuCo: Efficient and Flexible Hardware-Driven Automatic Configuration of Tile Transfers in GPUs (HPCA 26)
+### [QuCo: Efficient and Flexible Hardware-Driven Automatic Configuration of Tile Transfers in GPUs](https://ieeexplore.ieee.org/document/11408440) (HPCA 26)
 
-### HDPAT: Hierarchical Distributed Page Address Translation for Wafer-Scale GPUs (HPCA 26)
+### [HDPAT: Hierarchical Distributed Page Address Translation for Wafer-Scale GPUs](https://ieeexplore.ieee.org/abstract/document/11408538) (HPCA 26)
 
 ### [DaisenBot: Human-AI Collaboration in GPU Performance Analysis with Multi-Modal AI Assistant](https://sarchlab.org/cams25/DaisenBot-%20Human-AI%20Collaboration%20in%20GPU%20Performance%20Analysis%20with%20Multi-Modal%20AI%20Assistant.pdf)
 
