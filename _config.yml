@@ -17,17 +17,17 @@ minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "
 # Site Settings
 locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "Day dream"
+title                    : "Daoxuan Xu"
 title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
+subtitle                 : "Computer Architecture Research" # site tagline that appears below site title in masthead
 name                     : "Daoxuan Xu"
-description              : "Ph.D candidate in Computer Science at William & Mary, supervised by Prof. Yifan Sun"
+description              : "Ph.D. student in Computer Science at William & Mary working on GPU architecture and wafer-scale systems."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/asets/images/88x88.png"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
+masthead_title           : "Daoxuan Xu" # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : # true, false (default)
 words_per_minute         : 200
 enable_copy_code_button  : # true, false (default)
@@ -115,7 +115,7 @@ analytics:
 author:
   name             : "Daoxuan Xu"
   avatar           : "/assets/images/avatar.jpg"
-  bio              : "Ph.D candidate in Computer Science at William & Mary, supervised by [**Prof. Yifan Sun**](https://sarchlab.org/syifan) and [**Prof. Jie Ren**](https://jren73.github.io/)"
+  bio              : "Ph.D. student in Computer Science at William & Mary, supervised by [**Prof. Yifan Sun**](https://sarchlab.org/syifan) and [**Prof. Jie Ren**](https://jren73.github.io/)"
   location         : Williamsburg, Virginia, USA
   # email            : dxu05@wm.edu
   links:

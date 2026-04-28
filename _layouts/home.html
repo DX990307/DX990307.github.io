@@ -3,60 +3,252 @@ layout: archive
 ---
 
 {{ content }}
-<!-- News Section Start -->
-<h3 class="archive__subtitle">About me</h3>
-<ul style="font-size:20px;">
-<!-- <div style="font-size:20px;line-height:1.6;"> -->
-  I am currently a second-year Ph.D. student in Computer Science at the 
-  College of William & Mary, fortunate to be advised by Prof. 
-  <a href=" https://sarchlab.org/syifan">Yifan Sun</a> and Prof. <a href="https://jren73.github.io/">Jie Ren</a>.
 
-  <br>Previously, I received my M.S. in Electrical and Computer Engineering
-   from the University of Florida and my B.S. in Electrical Engineering from
-    Beijing Technology and Business University.
+<section class="home-hero" id="about">
+  <div class="home-hero__copy">
+    <p class="home-eyebrow">Computer Architecture Research</p>
+    <h1>Daoxuan Xu</h1>
+    <p class="home-hero__lead">
+      I am a second-year Ph.D. student in Computer Science at William &amp; Mary,
+      advised by Prof. <a href="https://sarchlab.org/syifan">Yifan Sun</a> and
+      Prof. <a href="https://jren73.github.io/">Jie Ren</a>. My work focuses on
+      GPU architecture, wafer-scale systems, and tools for architecture simulation
+      and performance analysis.
+    </p>
+    <div class="home-hero__actions" aria-label="Primary links">
+      <a class="home-button home-button--primary" href="{{ '/pub/' | relative_url }}">Publications</a>
+      <a class="home-button" href="{{ '/project/' | relative_url }}">Projects</a>
+    </div>
+  </div>
 
-  <br> My research broadly centers on computer architecture. I am particularly
-   interested in exploring wafer-scale GPU architecture and developing tools 
-   for computer architecture simulation. I am still learning, and always eager
-    to deepen my understanding through both research and collaboration.
+  <div class="home-hero__visual" aria-label="Research preview">
+    <img src="{{ '/assets/images/papers/HDPAT.png' | relative_url }}" alt="HDPAT wafer-scale GPU architecture preview">
+    <div class="home-hero__caption">
+      <span>Wafer-scale GPU memory systems</span>
+      <strong>HPCA 2026</strong>
+    </div>
+  </div>
+</section>
 
-<!-- </div> -->
-  <!-- 你可以继续添加更多新闻 -->
-</ul>
-<!-- News Section End -->
+<section class="home-section home-section--split" id="highlights">
+  <div class="home-section__head">
+    <p class="home-eyebrow">Latest</p>
+    <h2>Highlights</h2>
+  </div>
 
+  <div class="home-news">
+    <article class="home-news__item">
+      <time>Nov 2025</time>
+      <p>Two papers were accepted by HPCA 2026: <a href="https://ieeexplore.ieee.org/document/11408440">QuCo</a> and <a href="https://ieeexplore.ieee.org/abstract/document/11408538">HDPAT</a>.</p>
+    </article>
+    <article class="home-news__item">
+      <time>Mar 2025</time>
+      <p><a href="https://ieeexplore.ieee.org/document/11096405">Sibir</a> was accepted by ISPASS 2025.</p>
+    </article>
+    <article class="home-news__item">
+      <time>Mar 2025</time>
+      <p><a href="https://dl.acm.org/doi/pdf/10.1145/3725798.3725800">Exploring the Wafer-Scale GPUs</a> was accepted by GPGPU 2025.</p>
+    </article>
+    <article class="home-news__item">
+      <time>Jan 2024</time>
+      <p><a href="https://wmit-pages-prod.s3.amazonaws.com/wp-content/uploads/sites/13/2024/03/19170923/MOST24-Raindrop.pdf">Impact of Raindrops on Camera-Based Detection</a> was accepted by MOST 2024.</p>
+    </article>
+  </div>
+</section>
 
-<!-- News Section Start -->
-<h3 class="archive__subtitle">News</h3>
-<ul style="font-size:20px;line-height:1.6;">
-  <li>Nov 2025: Two papers accepted by HPCA 2026: <a href="https://ieeexplore.ieee.org/abstract/document/11408538">HDPAT: Hierarchical Distributed Page Address Translation for Wafer-Scale GPUs</a> and <a href="https://ieeexplore.ieee.org/document/11408440">QuCo: Efficient and Flexible Hardware-Driven Automatic Configuration of Tile Transfers in GPUs</a>.</li>
-  <li>Mar 2025: <a href=" https://ieeexplore.ieee.org/document/11096405">One paper has been accepted by ISPASS 2025</a></li>
-  <li>Mar 2025: <a href=" https://dl.acm.org/doi/pdf/10.1145/3725798.3725800">One paper has been accepted by GPGPU 2025</a></li>
-  <li>Jan 2024: <a href=" https://wmit-pages-prod.s3.amazonaws.com/wp-content/uploads/sites/13/2024/03/19170923/MOST24-Raindrop.pdf">One paper has been accepted by MOST 2024</a></li>
-  <!-- 你可以继续添加更多新闻 -->
-</ul>
-<!-- News Section End -->
+<section class="home-section" id="research">
+  <div class="home-section__head">
+    <p class="home-eyebrow">Research</p>
+    <h2>What I Work On</h2>
+  </div>
 
-<!-- <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3> -->
+  <div class="home-research-grid">
+    <article class="home-research-card">
+      <span>01</span>
+      <h3>Wafer-scale GPU architecture</h3>
+      <p>Studying memory translation, communication, and system organization for large-scale GPU platforms.</p>
+    </article>
+    <article class="home-research-card">
+      <span>02</span>
+      <h3>GPU performance tooling</h3>
+      <p>Building and evaluating tools that make GPU behavior easier to inspect, instrument, and explain.</p>
+    </article>
+    <article class="home-research-card">
+      <span>03</span>
+      <h3>Architecture simulation</h3>
+      <p>Developing simulation workflows for exploring design tradeoffs in modern computer architecture.</p>
+    </article>
+  </div>
+</section>
 
-{% if paginator %}
-  {% assign posts = paginator.posts %}
-{% else %}
-  {% assign posts = site.posts %}
+<section class="home-section home-section--split" id="education">
+  <div class="home-section__head">
+    <p class="home-eyebrow">Background</p>
+    <h2>Education</h2>
+  </div>
+
+  <div class="home-timeline">
+    <article class="home-timeline__item">
+      <div>
+        <h3>William &amp; Mary</h3>
+        <p>Ph.D. in Computer Science</p>
+      </div>
+      <time>2023 - Present</time>
+    </article>
+    <article class="home-timeline__item">
+      <div>
+        <h3>University of Florida</h3>
+        <p>M.S. in Electrical and Computer Engineering</p>
+      </div>
+      <time>2021 - 2023</time>
+    </article>
+    <article class="home-timeline__item">
+      <div>
+        <h3>Beijing Technology &amp; Business University</h3>
+        <p>B.S. in Electrical Engineering</p>
+      </div>
+      <time>2017 - 2021</time>
+    </article>
+  </div>
+</section>
+
+<section class="home-section" id="publications">
+  <div class="home-section__head home-section__head--inline">
+    <div>
+      <p class="home-eyebrow">Selected Work</p>
+      <h2>Publications</h2>
+    </div>
+    <a class="home-text-link" href="{{ '/pub/' | relative_url }}">View all</a>
+  </div>
+
+  <div class="home-publication-grid">
+    <article class="home-publication-card">
+      <a class="home-publication-card__image" href="https://ieeexplore.ieee.org/abstract/document/11408440">
+        <img src="{{ '/assets/images/papers/QuCo.png' | relative_url }}" alt="QuCo paper preview" loading="lazy">
+      </a>
+      <div class="home-publication-card__body">
+        <span>HPCA 2026</span>
+        <h3><a href="https://ieeexplore.ieee.org/abstract/document/11408440">QuCo: Efficient and Flexible Hardware-Driven Automatic Configuration of Tile Transfers in GPUs</a></h3>
+      </div>
+    </article>
+
+    <article class="home-publication-card">
+      <a class="home-publication-card__image" href="https://ieeexplore.ieee.org/abstract/document/11408538">
+        <img src="{{ '/assets/images/papers/HDPAT.png' | relative_url }}" alt="HDPAT paper preview" loading="lazy">
+      </a>
+      <div class="home-publication-card__body">
+        <span>HPCA 2026</span>
+        <h3><a href="https://ieeexplore.ieee.org/abstract/document/11408538">HDPAT: Hierarchical Distributed Page Address Translation for Wafer-Scale GPUs</a></h3>
+      </div>
+    </article>
+
+    <article class="home-publication-card">
+      <a class="home-publication-card__image" href="https://sarchlab.org/cams25/DaisenBot-%20Human-AI%20Collaboration%20in%20GPU%20Performance%20Analysis%20with%20Multi-Modal%20AI%20Assistant.pdf">
+        <img src="{{ '/assets/images/papers/DaisenBot.png' | relative_url }}" alt="DaisenBot paper preview" loading="lazy">
+      </a>
+      <div class="home-publication-card__body">
+        <span>CAMS 2025</span>
+        <h3><a href="https://sarchlab.org/cams25/DaisenBot-%20Human-AI%20Collaboration%20in%20GPU%20Performance%20Analysis%20with%20Multi-Modal%20AI%20Assistant.pdf">DaisenBot: Human-AI Collaboration in GPU Performance Analysis with Multi-Modal AI Assistant</a></h3>
+      </div>
+    </article>
+
+    <article class="home-publication-card">
+      <a class="home-publication-card__image" href="https://ieeexplore.ieee.org/document/11096405">
+        <img src="{{ '/assets/images/papers/Sibir.png' | relative_url }}" alt="Sibir paper preview" loading="lazy">
+      </a>
+      <div class="home-publication-card__body">
+        <span>ISPASS 2025</span>
+        <h3><a href="https://ieeexplore.ieee.org/document/11096405">Sibir: A Dynamic Binary Instrumentation Framework Targeting AMD GPUs</a></h3>
+      </div>
+    </article>
+
+    <article class="home-publication-card">
+      <a class="home-publication-card__image" href="https://dl.acm.org/doi/pdf/10.1145/3725798.3725800">
+        <img src="{{ '/assets/images/papers/Exploring the Wafer-Scale GPUs.png' | relative_url }}" alt="Exploring the Wafer-Scale GPUs paper preview" loading="lazy">
+      </a>
+      <div class="home-publication-card__body">
+        <span>GPGPU 2025</span>
+        <h3><a href="https://dl.acm.org/doi/pdf/10.1145/3725798.3725800">Exploring the Wafer-Scale GPUs</a></h3>
+      </div>
+    </article>
+
+    <article class="home-publication-card">
+      <a class="home-publication-card__image" href="https://wmit-pages-prod.s3.amazonaws.com/wp-content/uploads/sites/13/2024/03/19170923/MOST24-Raindrop.pdf">
+        <img src="{{ '/assets/images/papers/Impact of Raindrops.png' | relative_url }}" alt="Impact of Raindrops paper preview" loading="lazy">
+      </a>
+      <div class="home-publication-card__body">
+        <span>MOST 2024</span>
+        <h3><a href="https://wmit-pages-prod.s3.amazonaws.com/wp-content/uploads/sites/13/2024/03/19170923/MOST24-Raindrop.pdf">Impact of Raindrops on Camera-Based Detection in Software-Defined Vehicles</a></h3>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="home-section home-section--split" id="talks-service">
+  <div class="home-section__head">
+    <p class="home-eyebrow">Community</p>
+    <h2>Talks &amp; Service</h2>
+  </div>
+
+  <div class="home-two-column">
+    <div>
+      <h3>Talks</h3>
+      <ul class="home-plain-list">
+        <li><strong>HDPAT: Hierarchical Distributed Page Address Translation for Wafer-Scale GPUs</strong><span>GPGPU 2026</span></li>
+        <li><strong>Exploring the Wafer-Scale GPUs</strong><span>GPGPU 2025</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Service</h3>
+      <ul class="home-plain-list">
+        <li><strong>Publication Chair</strong><span>GPGPU 2026</span></li>
+        <li><strong>External Reviewer</strong><span>Computing Frontiers 2024</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="home-section home-section--split" id="notes">
+  <div class="home-section__head">
+    <p class="home-eyebrow">Notes</p>
+    <h2>Learning Log</h2>
+  </div>
+
+  <div class="home-note">
+    <h3><a href="{{ '/project/computerArchitectureLearningNote/' | relative_url }}">Computer Architecture Learning Note</a></h3>
+    <p>Short notes and summaries from my ongoing study of computer architecture.</p>
+    <a class="home-text-link" href="{{ '/project/computerArchitectureLearningNote/Cache/' | relative_url }}">Read the cache note</a>
+  </div>
+</section>
+
+{% if site.posts.size > 0 %}
+<section class="home-section" id="posts">
+  <div class="home-section__head">
+    <p class="home-eyebrow">Writing</p>
+    <h2>{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h2>
+  </div>
+
+  {% if paginator %}
+    {% assign posts = paginator.posts %}
+  {% else %}
+    {% assign posts = site.posts %}
+  {% endif %}
+
+  {% assign entries_layout = page.entries_layout | default: 'list' %}
+  <div class="entries-{{ entries_layout }}">
+    {% include documents-collection.html entries=posts type=entries_layout %}
+  </div>
+
+  {% include paginator.html %}
+</section>
 {% endif %}
 
-{% assign entries_layout = page.entries_layout | default: 'list' %}
-<div class="entries-{{ entries_layout }}">
-  {% include documents-collection.html entries=posts type=entries_layout %}
-</div>
-
-{% include paginator.html %}
-
-<!-- Visitor Counter Section Start -->
-<div style="text-align: center; margin-top: 30px; padding: 20px;">
-  <h3 class="archive__subtitle">Visitor Statistics</h3>
+<section class="home-section home-visitors" id="visitors">
+  <div class="home-section__head">
+    <p class="home-eyebrow">Visitors</p>
+    <h2>Visitor Statistics</h2>
+  </div>
   <a href="https://clustrmaps.com/site/1c667" title="ClustrMaps">
-    <img src="//www.clustrmaps.com/map_v2.png?d=R5iIa9ZfeKgo_ACVWpsP_kSCJssE6UMmyPDvzBwYCDs&cl=ffffff" alt="Visitor Map" style="border: none;" />
+    <img src="//www.clustrmaps.com/map_v2.png?d=R5iIa9ZfeKgo_ACVWpsP_kSCJssE6UMmyPDvzBwYCDs&cl=ffffff" alt="Visitor map">
   </a>
-</div>
-<!-- Visitor Counter Section End -->
+</section>
