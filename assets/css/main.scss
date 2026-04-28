@@ -8,6 +8,24 @@ search: false
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+.site-logo {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 2.45rem;
+  height: 2.45rem;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.site-logo img {
+  width: 3.55rem;
+  height: 3.55rem;
+  max-height: none;
+  object-fit: contain;
+}
+
 .layout--home .page__title:empty {
   display: none;
 }
