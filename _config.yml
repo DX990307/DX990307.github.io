@@ -117,11 +117,8 @@ author:
   avatar           : "/assets/images/avatar.jpg"
   bio              : "Ph.D. student in Computer Science at William & Mary, supervised by [**Prof. Yifan Sun**](https://sarchlab.org/syifan) and [**Prof. Jie Ren**](https://jren73.github.io/)"
   location         : Williamsburg, Virginia, USA
-  # email            : dxu05@wm.edu
+  email            : dxu05@wm.edu
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:dxu05@wm.edu"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
