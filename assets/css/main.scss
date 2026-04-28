@@ -13,12 +13,25 @@ search: false
 }
 
 .layout--home #main {
-  max-width: 1680px;
-  padding-inline: clamp(1rem, 3vw, 2.5rem);
+  max-width: 1900px;
+  padding-inline: clamp(0.75rem, 2vw, 2rem);
 }
 
 .layout--home .archive {
   padding-top: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .layout--home.wide .archive {
+    width: calc(100% - 220px);
+    padding-inline-end: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .layout--home.wide .archive {
+    width: calc(100% - 300px);
+  }
 }
 
 .home-eyebrow {
@@ -163,7 +176,7 @@ search: false
 
 .home-section--split {
   display: grid;
-  grid-template-columns: minmax(150px, 0.32fr) minmax(0, 0.68fr);
+  grid-template-columns: minmax(150px, 220px) minmax(0, 1fr);
   gap: clamp(1rem, 3vw, 2rem);
   align-items: start;
 }
