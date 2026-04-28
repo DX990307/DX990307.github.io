@@ -8,6 +8,25 @@ search: false
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+.masthead__inner-wrap {
+  max-width: none;
+  padding-inline: clamp(1rem, 3vw, 2.5rem);
+}
+
+.masthead__menu,
+.greedy-nav {
+  width: 100%;
+}
+
+.greedy-nav .visible-links {
+  margin-inline-start: auto;
+  flex: 0 1 auto;
+}
+
+.greedy-nav .visible-links a {
+  margin-inline: clamp(0.65rem, 1.4vw, 1.15rem);
+}
+
 .site-logo {
   display: inline-flex !important;
   align-items: center;
