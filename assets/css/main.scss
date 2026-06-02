@@ -297,6 +297,11 @@ search: false
   border: 0;
 }
 
+.home-visitors__map {
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width: 900px) {
   .home-hero,
   .home-section--split,
