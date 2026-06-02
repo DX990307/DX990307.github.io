@@ -293,13 +293,33 @@ search: false
 }
 
 .home-visitors img {
-  max-width: min(100%, 640px);
+  max-width: 100%;
   border: 0;
 }
 
 .home-visitors__map {
+  align-items: center;
   display: flex;
+  width: min(100%, 420px);
+  margin: 0 auto;
+  overflow: hidden;
   justify-content: center;
+}
+
+.home-visitors__map > *,
+.home-visitors__map a {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.home-visitors__map img,
+.home-visitors__map iframe,
+.home-visitors__map canvas,
+.home-visitors__map object,
+.home-visitors__map embed {
+  display: block;
+  max-width: 100% !important;
+  height: auto !important;
 }
 
 @media (max-width: 900px) {
