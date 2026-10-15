@@ -7,6 +7,10 @@ author_profile: true
 
 ## GPU architecture research
 
+### [Akita: A High Usability Simulation Framework for Computer Architecture](https://arxiv.org/abs/2604.28073) (arXiv preprint, 2026)
+
+Sabila Al Jannat, Ying Li, Mengyang He, Xuzhong Wang, Huizhi Zhao, Jingxiang Sun, Daoxuan Xu, Enze Xu, and Yifan Sun. 2026. Akita: A High Usability Simulation Framework for Computer Architecture. arXiv:2604.28073.
+
 ### [QuCo: Efficient and Flexible Hardware-Driven Automatic Configuration of Tile Transfers in GPUs](https://ieeexplore.ieee.org/document/11408440) (HPCA 26)
 
 ### [HDPAT: Hierarchical Distributed Page Address Translation for Wafer-Scale GPUs](https://ieeexplore.ieee.org/abstract/document/11408538) (HPCA 26)
